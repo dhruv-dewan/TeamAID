@@ -9,7 +9,6 @@ from torchvision import datasets, models, transforms
 import matplotlib.pyplot as plt
 import numpy as np
 
-from google.colab import drive
 import os
 
 import random
@@ -17,8 +16,8 @@ import random
 from tqdm.auto import tqdm
 from sklearn.metrics import f1_score
 
-train_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/train" 
-test_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/test"
+#train_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/train" 
+train_dir="data/archive/train"
 
 label=["malignant","benign"]
 
@@ -76,7 +75,6 @@ def train_loop(dataloader, model, loss_fn, optimizer):
   size = len(dataloader.dataset)
   # Set the model to training mode - important for batch normalization and dropout layers
   # Unnecessary in this situation but added for best practices
-  progress_bar = tqdm(desc='training epoch', total=len(dataloader))
 
   model.train()
   for batch, (X, y) in enumerate(dataloader):
@@ -93,8 +91,6 @@ def train_loop(dataloader, model, loss_fn, optimizer):
     optimizer.step()
     optimizer.zero_grad()
 
-    progress_bar.update(1)
-
     # Display at start and at end
     if batch % (len(dataloader)-1) == 0:
         loss, current = loss.item(), batch * batch_size + len(X)
@@ -104,8 +100,6 @@ for t in range(epochs):
   print(f"Epoch {t+1}\n-------------------------------")
   train_loop(train_dataloader, model, loss_fn, optimizer)
   # test_loop(test_dataloader, model, loss_fn)
-  if t % 10 == 0:
-    test_loop(test_dataloader, model, loss_fn)
 print("Training Complete.")
 
 torch.save(model.state_dict(), 'model.pth')
