@@ -13,7 +13,6 @@ import os
 
 import random
 
-from tqdm.auto import tqdm
 from sklearn.metrics import f1_score
 
 #train_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/train" 
@@ -54,10 +53,12 @@ train_dataloader = DataLoader(train_data, batch_size=64, shuffle=True)
 model = models.resnet34(weights='DEFAULT') # Using pre-trained model
 model.fc = nn.Linear(512,2)
 # Freeze all but last layer
+"""
 for param in model.parameters():
   param.requires_grad = False
 for param in model.fc.parameters():
   param.requires_grad = True
+"""
 
 batch_size = 64
 epochs = 50
