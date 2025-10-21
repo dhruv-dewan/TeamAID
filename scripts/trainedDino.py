@@ -49,9 +49,30 @@ print("Train Dataset Size: ", len(train_data))
 train_dataloader = DataLoader(train_data, batch_size=64, shuffle=True)
 #test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
 
-# torchvision.models --> ResNet34 (Try other sizes and test later)
-model = models.resnet34(weights='DEFAULT') # Using pre-trained model
-model.fc = nn.Linear(512,2)
+# model = models.resnet50(weights="DEFAULT") # Using pre-trained DINO model
+model = torch.hub.load('facebookresearch/dino:main', 'dino_resnet50') # Using pre-trained DINO model
+# Some DINO backbone variants replace `model.fc` with `Identity`. Determine the
+# correct feature dimension robustly and attach a classifier.
+if hasattr(model, 'fc') and hasattr(model.fc, 'in_features'):
+  in_features = model.fc.in_features
+else:
+  # Try to infer from the last conv block (works for ResNet34/50)
+  in_features = None
+  try:
+    if hasattr(model, 'layer4'):
+      last_block = model.layer4[-1]
+      if hasattr(last_block, 'conv3'):
+        in_features = last_block.conv3.out_channels
+      elif hasattr(last_block, 'conv2'):
+        in_features = last_block.conv2.out_channels
+  except Exception:
+    in_features = None
+
+  # Fallbacks: ResNet50 -> 2048, ResNet34 -> 512
+  if in_features is None:
+    in_features = 2048
+
+model.fc = nn.Linear(in_features, 2)
 # Freeze all but last layer
 """
 for param in model.parameters():
@@ -60,6 +81,7 @@ for param in model.fc.parameters():
   param.requires_grad = True
 """
 
+
 batch_size = 64
 epochs = 50
 learning_rate = 3e-4
@@ -67,8 +89,22 @@ learning_rate = 3e-4
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 loss_fn = nn.CrossEntropyLoss()
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# Robust device selection with diagnostics
+cuda_available = torch.cuda.is_available()
+cuda_count = torch.cuda.device_count() if cuda_available else 0
+cuda_version = torch.version.cuda
+device = torch.device("cuda" if cuda_available else "cpu")
 print(f"Using device: {device}")
+print(f"torch.cuda.is_available(): {cuda_available}")
+print(f"torch.cuda.device_count(): {cuda_count}")
+print(f"torch.version.cuda: {cuda_version}")
+if cuda_available and cuda_count > 0:
+  try:
+    print(f"Current CUDA device name: {torch.cuda.get_device_name(0)}")
+  except Exception as e:
+    print(f"Could not get CUDA device name: {e}")
+else:
+  print("CUDA not available or no CUDA devices found; running on CPU.")
 
 model.to(device)
 
