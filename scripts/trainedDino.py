@@ -15,6 +15,8 @@ import random
 
 from sklearn.metrics import f1_score
 
+MODEL= "dino"  # Options: "dino" or "supervised"
+
 #train_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/train" 
 train_dir="data/archive/train"
 
@@ -31,26 +33,28 @@ training_trans = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) # normalization
 ])
-test_trans = transforms.Compose([
-    # transforms.Resize((224, 224)),
-    transforms.CenterCrop((224, 224)),
-    transforms.RandomHorizontalFlip(),
-    transforms.RandomApply([transforms.Lambda(lambda x: transforms.functional.rotate(x, random.choice([90, 180, 270])))]),
-    transforms.ToTensor(),
-    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
-])
 
 train_data = datasets.ImageFolder(train_dir, training_trans)
-#test_data = datasets.ImageFolder(test_dir, test_trans)
 
 print("Train Dataset Size: ", len(train_data))
-#print("Train Dataset Size: ", len(test_data))
 
 train_dataloader = DataLoader(train_data, batch_size=64, shuffle=True)
-#test_dataloader = DataLoader(test_data, batch_size=64, shuffle=True)
 
-# model = models.resnet50(weights="DEFAULT") # Using pre-trained DINO model
-model = torch.hub.load('facebookresearch/dino:main', 'dino_resnet50') # Using pre-trained DINO model
+
+if MODEL == "dino":
+  # Loading DINO model locally (for HPC node running without internet access)
+  try:
+      model = torch.hub.load('facebookresearch/dino:main', 'dino_resnet50')
+  except Exception as e:
+      print("Warning: Failed to fetch from internet; trying local repo...")
+      model = torch.hub.load('/home/ddewan/dino', 'dino_resnet50', source='local')
+
+elif MODEL == "supervised":
+  model = models.resnet50(weights='DEFAULT')
+
+else:
+  raise ValueError("Invalid MODEL specified. Choose 'dino' or 'supervised'.")
+
 # Some DINO backbone variants replace `model.fc` with `Identity`. Determine the
 # correct feature dimension robustly and attach a classifier.
 if hasattr(model, 'fc') and hasattr(model.fc, 'in_features'):
@@ -73,14 +77,6 @@ else:
     in_features = 2048
 
 model.fc = nn.Linear(in_features, 2)
-# Freeze all but last layer
-"""
-for param in model.parameters():
-  param.requires_grad = False
-for param in model.fc.parameters():
-  param.requires_grad = True
-"""
-
 
 batch_size = 64
 epochs = 50
