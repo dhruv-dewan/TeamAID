@@ -1,15 +1,15 @@
 Loading cuda/12.3.0/gcc/11.3.0/zen2
   Loading requirement: gcc/11.3.0
 ============================================================
-Starting job train_dino  (Job ID: 14516627)
-Running on host: gpu-b9-1.zaratan.umd.edu
+Starting job test_dino  (Job ID: 14608882)
+Running on host: gpu-b10-2.zaratan.umd.edu
 Cores per task: 4
 GPUs allocated : 0
-Job started at : Wed Oct 22 22:07:25 EDT 2025
+Job started at : Tue Oct 28 15:42:55 EDT 2025
 Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
 ============================================================
 
-Wed Oct 22 22:07:25 2025       
+Tue Oct 28 15:42:55 2025       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
 |-----------------------------------------+------------------------+----------------------+
@@ -17,8 +17,8 @@ Wed Oct 22 22:07:25 2025
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:81:00.0 Off |                    0 |
-| N/A   29C    P0             54W /  400W |       0MiB /  40960MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:C1:00.0 Off |                    0 |
+| N/A   24C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
                                                                                          
@@ -33,13 +33,14 @@ Wed Oct 22 22:07:25 2025
 1
 
 Evaluating on original test set...
+Loaded supervised model successfully
 
 Original Test Set Results:
-Test Loss: 0.365619
-Accuracy: 92.6%
-F1 Score: 0.9259
-Recall: 0.9258
+Test Loss: 0.327120
+Accuracy: 91.5%
+F1 Score: 0.9150
+Recall: 0.9152
 
-Job finished at: Wed Oct 22 22:07:39 EDT 2025
+Job finished at: Tue Oct 28 15:43:59 EDT 2025
 Exit code: 
 ============================================================

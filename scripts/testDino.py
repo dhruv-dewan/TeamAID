@@ -35,6 +35,7 @@ print("\nEvaluating on original test set...")
 original_test_data = datasets.ImageFolder(original_test_dir, test_trans)
 original_test_dataloader = DataLoader(original_test_data, batch_size=64, shuffle=False)
 
+model = None
 
 if MODEL == "dino":
     # Loading DINO model locally (for HPC node running without internet access)
@@ -44,16 +45,42 @@ if MODEL == "dino":
         print("Warning: Failed to fetch from internet; trying local repo...")
         model = torch.hub.load('/home/ddewan/dino', 'dino_resnet50', source='local')
 
+    model = model.cpu()
+
+    # Some DINO backbone variants replace `model.fc` with `Identity`. Determine the
+    # correct feature dimension robustly and attach a classifier.
+    if hasattr(model, 'fc') and hasattr(model.fc, 'in_features'):
+        in_features = model.fc.in_features
+    else:
+        # Try to infer from the last conv block (works for ResNet34/50)
+        in_features = None
+        try:
+            if hasattr(model, 'layer4'):
+                last_block = model.layer4[-1]
+                if hasattr(last_block, 'conv3'):
+                    in_features = last_block.conv3.out_channels
+                elif hasattr(last_block, 'conv2'):
+                    in_features = last_block.conv2.out_channels
+        except Exception:
+            in_features = None
+
+        # Fallbacks: ResNet50 -> 2048, ResNet34 -> 512
+        if in_features is None:
+            in_features = 2048
+
+    model.fc = nn.Linear(in_features, 2)
     model.load_state_dict(torch.load('dino model/model.pth'))
 
 elif MODEL == "supervised":
     model = models.resnet50(weights='DEFAULT')
+    model = model.cpu()
+    model.fc = nn.Linear(model.fc.in_features, 2)
     model.load_state_dict(torch.load('supervised model/model.pth'))
 
 else:
     raise ValueError("Invalid MODEL specified. Choose 'dino' or 'supervised'.")
 
-model.fc = nn.Linear(model.fc.in_features, 2)
+# model.fc = nn.Linear(model.fc.in_features, 2)
 # Freeze all but last layer
 for param in model.parameters():
     param.requires_grad = False

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=train_dino
+#SBATCH --job-name=test_dino
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
