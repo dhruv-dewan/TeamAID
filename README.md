@@ -5,7 +5,7 @@
 - Do not apply random augmentations on test data
     - Should be uniform unlike train data that can be diversified and randomized
 
-- Improvement between DINO and supervised ResNet50 is trivial as of right now
+- Difference between DINO and supervised ResNet50 is trivial as of right now
     - May need to prove significance OR
     - change model loading (if wrong) OR
     - Add unlabeled skin cancer data to DINO pretraining

@@ -1,10 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_dino
+#SBATCH --job-name=test_supervised_stanford
+#SBATCH --account=heng-prj-aac
+#SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
-#SBATCH --time=6:00:00
+#SBATCH --time=2:00:00
 #SBATCH --output=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.out
 
 source /etc/profile
@@ -35,7 +37,7 @@ cd /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/
 export CUDA_VISIBLE_DEVICES=0
 python -c "import torch; print(torch.cuda.device_count())"
 
-python scripts/testDino.py
+python scripts/testDino_Stanford.py
 
 echo
 echo "Job finished at: $(date)"

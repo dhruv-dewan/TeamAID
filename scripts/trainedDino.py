@@ -15,7 +15,7 @@ import random
 
 from sklearn.metrics import f1_score
 
-MODEL= "supervised"  # Options: "dino" or "supervised"
+MODEL= "dino"  # Options: "dino" or "supervised"
 
 #train_dir="/scratch/zt1/project/heng-prj/user/mnapa/data/archive/train" 
 train_dir="data/archive/train"
@@ -139,4 +139,14 @@ for t in range(epochs):
 	# test_loop(test_dataloader, model, loss_fn)
 print("Training Complete.")
 
-torch.save(model.state_dict(), 'model.pth')
+
+if MODEL == "dino":
+	save_dir = "dino model"
+elif MODEL == "supervised":
+	save_dir = "supervised model"
+
+if not os.path.exists(save_dir):
+	os.makedirs(save_dir)
+save_path = os.path.join(save_dir, "model.pth")
+
+torch.save(model.state_dict(), save_path)
