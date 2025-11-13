@@ -1,0 +1,58 @@
+Loading cuda/12.3.0/gcc/11.3.0/zen2
+  Loading requirement: gcc/11.3.0
+============================================================
+Starting job test_supervised_stanford  (Job ID: 14911478)
+Running on host: gpu-b9-7.zaratan.umd.edu
+Cores per task: 4
+GPUs allocated : 0
+Job started at : Wed Nov 12 00:05:35 EST 2025
+Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
+============================================================
+
+Wed Nov 12 00:05:35 2025       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
+| N/A   24C    P0             56W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+1
+
+Evaluating on diverse test set...
+Test Dataset Size:  656
+Loaded supervised model successfully
+
+Overall Test Loss: 5.284218
+
+Skin Tone 12 Metrics:
+Total samples: 208
+Accuracy: 40.9%
+F1 Score: 0.4185
+
+Skin Tone 34 Metrics:
+Total samples: 241
+Accuracy: 47.3%
+F1 Score: 0.4657
+
+Skin Tone 56 Metrics:
+Total samples: 207
+Accuracy: 45.9%
+F1 Score: 0.4751
+
+Job finished at: Wed Nov 12 00:06:17 EST 2025
+Exit code: 
+============================================================
