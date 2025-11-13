@@ -82,10 +82,14 @@ else:
 
 model.fc = nn.Linear(in_features, 2)
 
-batch_size = 64
-epochs = 50
-learning_rate = 3e-4
 
+batch_size = 64
+epochs = 20
+learning_rate = 1e-4
+#lr - > 3e-4
+
+# model.paramters() - all parameters
+# optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate) - only trainable parameters
 optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
 loss_fn = nn.CrossEntropyLoss()
 

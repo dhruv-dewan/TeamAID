@@ -15,7 +15,7 @@ import random
 from sklearn.metrics import f1_score, recall_score
 import pandas as pd
 
-MODEL= "supervised"  # Options: "dino" or "supervised"
+MODEL= "dino"  # Options: "dino" or "supervised"
 
 # First test directory (diverse test set)
 original_test_dir = "data/stanford"

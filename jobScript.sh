@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_supervised_stanford
+#SBATCH --job-name=train_dino_frozen
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
@@ -37,7 +37,7 @@ cd /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/
 export CUDA_VISIBLE_DEVICES=0
 python -c "import torch; print(torch.cuda.device_count())"
 
-python scripts/testDino_Stanford.py
+python scripts/trainedDino.py
 
 echo
 echo "Job finished at: $(date)"
