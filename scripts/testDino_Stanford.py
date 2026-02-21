@@ -24,6 +24,7 @@ label=["malignant","benign"]
 
 test_trans = transforms.Compose([
     # transforms.Resize((224, 224)),
+    transforms.Resize((256, 256)),
     transforms.CenterCrop((224, 224)),
     # transforms.RandomHorizontalFlip(),
     # transforms.RandomApply([transforms.Lambda(lambda x: transforms.functional.rotate(x, random.choice([90, 180, 270])))]),
