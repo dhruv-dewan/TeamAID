@@ -21,5 +21,9 @@ stanford_train_indices = f"{BASE_DIR}/stanford_train_indices.pt"
 
 # Labels and settings
 label = ["malignant", "benign"]
-batch_size = 64
+batch_size = 32
 num_classes = 2
+epochs = 50
+learning_rate = 1e-4
+
+# NEED TO SPLIT VALIDATION SETS AND IMPLEMENT EARLY STOPPING
