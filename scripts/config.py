@@ -19,6 +19,11 @@ model_path = f"{BASE_DIR}/model.pth"
 # stanford_train_indices location:
 stanford_train_indices = f"{BASE_DIR}/stanford_train_indices.pt"
 
+# Stratified DDI dataset paths
+ddi_train_dir = f"{BASE_DIR}/stratified_split/train"
+ddi_val_dir = f"{BASE_DIR}/stratified_split/val"
+ddi_test_dir = f"{BASE_DIR}/stratified_split/test"
+
 # Labels and settings
 label = ["malignant", "benign"]
 batch_size = 32

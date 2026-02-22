@@ -9,12 +9,13 @@ import numpy as np
 import os
 import random
 from sklearn.metrics import f1_score
-from utils import set_seed
+from utils import set_seed, EarlyStopping
 
 # Import all config values
 from config import (
     BASE_DIR,
-    isic_dir,
+    ddi_train_dir,
+    ddi_val_dir,
     batch_size,
     num_classes,
     epochs,
@@ -37,8 +38,16 @@ training_trans = transforms.Compose([
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) # normalization
 ])
 
-# Load ISIC dataset (CHANGE TO HAM10000) -> Make sure to create balanced dataloader
-train_data = datasets.ImageFolder(isic_dir, training_trans)
+test_trans = transforms.Compose([
+    transforms.Resize((256, 256)),
+    transforms.CenterCrop((224, 224)),
+    transforms.ToTensor(),
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+])
+
+# Load DDI datasets (train and val)
+train_data = datasets.ImageFolder(ddi_train_dir, training_trans)
+val_data = datasets.ImageFolder(ddi_val_dir, test_trans)
 
 # Print dataset details
 print("Train Dataset Size: ", len(train_data))
@@ -48,6 +57,7 @@ print("Malignant samples: ", sum(1 for _, label in train_data.samples if label =
 print("Benign samples: ", sum(1 for _, label in train_data.samples if label == train_data.class_to_idx['benign']))
 
 train_dataloader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
+val_dataloader = DataLoader(val_data, batch_size=batch_size, shuffle=False)
 
 # Load pre-trained ResNet50 model
 model = models.resnet50(weights='DEFAULT')
@@ -59,6 +69,24 @@ loss_fn = nn.CrossEntropyLoss()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print("Using device:", device)
 model = model.to(device)
+
+# Initialize early stopping
+early_stopping = EarlyStopping(patience=10, verbose=True, checkpoint_path=os.path.join(BASE_DIR, "best_model.pth"))
+
+def validate(model, dataloader, loss_fn, device):
+    """Validate model and return F1 score (weighted average)."""
+    model.eval()
+    all_preds, all_labels = [], []
+    
+    with torch.no_grad():
+        for X, y in dataloader:
+            images, labels = X.to(device), y.to(device)
+            pred = model(images)
+            all_preds.extend(pred.argmax(1).cpu().numpy())
+            all_labels.extend(labels.cpu().numpy())
+    
+    f1 = f1_score(all_labels, all_preds, average='weighted')
+    return f1
 
 def train(model, dataloader, optimizer, loss_fn, device):
     size = len(dataloader.dataset)
@@ -87,7 +115,18 @@ def train(model, dataloader, optimizer, loss_fn, device):
 for epoch in range(epochs):
     print(f"Epoch {epoch+1}\n-------------------------------")
     train(model, train_dataloader, optimizer, loss_fn, device)
+    
+    # Validation and early stopping
+    val_f1 = validate(model, val_dataloader, loss_fn, device)
+    print(f"Val F1 (weighted): {val_f1:.4f}")
+    
+    early_stopping(val_f1, model)
+    if early_stopping.early_stop:
+        print(f"Early stopping triggered after {epoch+1} epochs")
+        break
 
-print("Training complete!")
+print("\nTraining complete!")
 
-torch.save(model.state_dict(), "baseline_model.pth")
+# Load best model
+model.load_state_dict(torch.load(os.path.join(BASE_DIR, "best_model.pth")))
+print(f"Loaded best model (Best F1: {early_stopping.best_score:.4f})")
