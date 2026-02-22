@@ -82,15 +82,20 @@ else:
 
 model.fc = nn.Linear(in_features, 2)
 
+if MODEL == "dino":
+    # Freeze all layers except last 10 layers (9 (3 conv) + 1 ) of the ResNet
+    for name, param in model.named_parameters():
+        if "layer4" not in name and "fc" not in name:
+            param.requires_grad = False
 
 batch_size = 64
-epochs = 20
+epochs = 25
 learning_rate = 1e-4
 #lr - > 3e-4
 
 # model.paramters() - all parameters
 # optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate) - only trainable parameters
-optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+optimizer = torch.optim.AdamW(filter(lambda p: p.requires_grad, model.parameters()), lr=learning_rate)
 loss_fn = nn.CrossEntropyLoss()
 
 # Robust device selection with diagnostics

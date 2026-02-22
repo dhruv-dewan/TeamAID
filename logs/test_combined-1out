@@ -1,27 +1,27 @@
 Loading cuda/12.3.0/gcc/11.3.0/zen2
   Loading requirement: gcc/11.3.0
 ============================================================
-Starting job test_supervised_stanford  (Job ID: 14911478)
-Running on host: gpu-b9-7.zaratan.umd.edu
+Starting job test_combined  (Job ID: 17959407)
+Running on host: gpu-b9-6.zaratan.umd.edu
 Cores per task: 4
-GPUs allocated : 0
-Job started at : Wed Nov 12 00:05:35 EST 2025
+GPUs allocated : 
+Job started at : Tue Feb 17 14:44:33 EST 2026
 Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
 ============================================================
 
-Wed Nov 12 00:05:35 2025       
+Tue Feb 17 14:44:33 2026       
 +-----------------------------------------------------------------------------------------+
-| NVIDIA-SMI 575.57.08              Driver Version: 575.57.08      CUDA Version: 12.9     |
-|-----------------------------------------+------------------------+----------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
 | GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          Off |   00000000:41:00.0 Off |                    0 |
-| N/A   24C    P0             56W /  400W |       0MiB /  40960MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   28C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
-                                                                                         
+
 +-----------------------------------------------------------------------------------------+
 | Processes:                                                                              |
 |  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
@@ -30,29 +30,33 @@ Wed Nov 12 00:05:35 2025
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 
-1
 
-Evaluating on diverse test set...
-Test Dataset Size:  656
-Loaded supervised model successfully
+Evaluating on original test set...
 
-Overall Test Loss: 5.284218
+Original Test Set Results:
+Test Loss: 0.429397
+Accuracy: 90.8%
+F1 Score: 0.9078
+
+Evaluating on remaining 90% of Stanford dataset (per-skin-tone)...
+
+Stanford Test Set (90%) Overall Test Loss: 1.336845
 
 Skin Tone 12 Metrics:
-Total samples: 208
-Accuracy: 40.9%
-F1 Score: 0.4185
+Total samples: 188
+Accuracy: 73.4%
+F1 Score: 0.7421
 
 Skin Tone 34 Metrics:
-Total samples: 241
-Accuracy: 47.3%
-F1 Score: 0.4657
+Total samples: 217
+Accuracy: 65.9%
+F1 Score: 0.6494
 
 Skin Tone 56 Metrics:
-Total samples: 207
-Accuracy: 45.9%
-F1 Score: 0.4751
+Total samples: 187
+Accuracy: 68.4%
+F1 Score: 0.6970
 
-Job finished at: Wed Nov 12 00:06:17 EST 2025
+Job finished at: Tue Feb 17 14:46:37 EST 2026
 Exit code: 
 ============================================================

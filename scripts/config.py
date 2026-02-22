@@ -1,7 +1,8 @@
 # --- File: config.py ---
 
 # Base directory (data)
-BASE_DIR = "/scratch/zt1/project/heng-prj/user/mnapa/data"
+#BASE_DIR = "/scratch/zt1/project/heng-prj/user/mnapa/data"
+BASE_DIR = "/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/data"
 
 # Paths
 # isic train dir:
@@ -9,7 +10,8 @@ isic_dir = f"{BASE_DIR}/archive/train"
 # isic test dir:
 original_test_dir = f"{BASE_DIR}/archive/test" 
 # stanford train dir:
-stanford_dir = f"{BASE_DIR}/stanforddata"
+#stanford_dir = f"{BASE_DIR}/stanforddata"
+stanford_dir = f"{BASE_DIR}/stanford"
 # ddi_metadata path:
 metadata_path = f"{BASE_DIR}/ddi_metadata.csv"
 # model.pth location:
