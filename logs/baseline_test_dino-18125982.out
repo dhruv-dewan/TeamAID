@@ -1,15 +1,15 @@
 Loading cuda/12.3.0/gcc/11.3.0/zen2
   Loading requirement: gcc/11.3.0
 ============================================================
-Starting job baseline_test  (Job ID: 18123675)
-Running on host: gpu-b11-3.zaratan.umd.edu
+Starting job baseline_test_dino  (Job ID: 18125982)
+Running on host: gpu-b10-1.zaratan.umd.edu
 Cores per task: 4
 GPUs allocated : 
-Job started at : Sun Feb 22 17:33:30 EST 2026
+Job started at : Sun Feb 22 21:11:37 EST 2026
 Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
 ============================================================
 
-Sun Feb 22 17:33:30 2026       
+Sun Feb 22 21:11:38 2026       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
 +-----------------------------------------+------------------------+----------------------+
@@ -17,8 +17,8 @@ Sun Feb 22 17:33:30 2026
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
-| N/A   23C    P0             51W /  400W |       0MiB /  40960MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   25C    P0             54W /  400W |       0MiB /  40960MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
 
@@ -30,16 +30,22 @@ Sun Feb 22 17:33:30 2026
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
 Seed set to 42 (Deterministic mode enabled)
 Test Dataset Size:  132
 Classes:  ['benign', 'malignant']
 Class to index mapping:  {'benign': 0, 'malignant': 1}
 Malignant samples:  34
 Benign samples:  98
-Test Accuracy: 0.7955
-Test F1 Macro Average: 0.7186
-Test F1 Weighted Average: 0.7899
+Warning: Failed to fetch from internet; trying local repo...
+Extracted feature dimension from DINO ResNet50: 2048
+Test Accuracy: 0.7727
+Test F1 Macro Average: 0.6765
+Test F1 Weighted Average: 0.7620
 
-Job finished at: Sun Feb 22 17:33:39 EST 2026
+Job finished at: Sun Feb 22 21:14:42 EST 2026
 Exit code: 
 ============================================================

@@ -1,15 +1,15 @@
 Loading cuda/12.3.0/gcc/11.3.0/zen2
   Loading requirement: gcc/11.3.0
 ============================================================
-Starting job baseline_train  (Job ID: 18123605)
-Running on host: gpu-b11-1.zaratan.umd.edu
+Starting job baseline_train_dino  (Job ID: 18125926)
+Running on host: gpu-b11-3.zaratan.umd.edu
 Cores per task: 4
 GPUs allocated : 
-Job started at : Sun Feb 22 16:56:18 EST 2026
+Job started at : Sun Feb 22 21:02:31 EST 2026
 Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
 ============================================================
 
-Sun Feb 22 16:56:18 2026       
+Sun Feb 22 21:02:31 2026       
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
 +-----------------------------------------+------------------------+----------------------+
@@ -17,8 +17,8 @@ Sun Feb 22 16:56:18 2026
 | Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
 |                                         |                        |               MIG M. |
 |=========================================+========================+======================|
-|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
-| N/A   21C    P0             51W /  400W |       0MiB /  40960MiB |      0%      Default |
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   25C    P0             53W /  400W |       0MiB /  40960MiB |      0%      Default |
 |                                         |                        |             Disabled |
 +-----------------------------------------+------------------------+----------------------+
 
@@ -30,6 +30,20 @@ Sun Feb 22 16:56:18 2026
 |  No running processes found                                                             |
 +-----------------------------------------------------------------------------------------+
 
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torchvision/models/_utils.py:208: UserWarning: The parameter 'pretrained' is deprecated since 0.13 and may be removed in the future, please use 'weights' instead.
+  warnings.warn(
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torchvision/models/_utils.py:223: UserWarning: Arguments other than a weight enum or `None` for 'weights' are deprecated since 0.13 and may be removed in the future. The current behavior is equivalent to passing `weights=None`.
+  warnings.warn(msg)
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 /home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
   return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
 /home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/autograd/graph.py:841: UserWarning: Deterministic behavior was enabled with either `torch.use_deterministic_algorithms(True)` or `at::Context::setDeterministicAlgorithms(true)`, but this operation is not deterministic because it uses CuBLAS and you have CUDA >= 10.2. To enable deterministic behavior in this case, you must set an environment variable before running your PyTorch application: CUBLAS_WORKSPACE_CONFIG=:4096:8 or CUBLAS_WORKSPACE_CONFIG=:16:8. For more information, go to https://docs.nvidia.com/cuda/cublas/index.html#results-reproducibility (Triggered internally at /pytorch/aten/src/ATen/Context.cpp:315.)
@@ -80,122 +94,149 @@ Classes:  ['benign', 'malignant']
 Class to index mapping:  {'benign': 0, 'malignant': 1}
 Malignant samples:  103
 Benign samples:  290
+Warning: Failed to fetch from internet; trying local repo...
+Extracted feature dimension from DINO ResNet50: 2048
 Using device: cuda
 Epoch 1
 -------------------------------
-Loss: 0.0017017022950655328
-Val F1 (weighted): 0.6300
-✓ Checkpoint saved (F1: 0.6300)
+Loss: 0.0017678002061431342
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
 Epoch 2
 -------------------------------
-Loss: 0.0011729274997274385
-Val F1 (weighted): 0.6435
-✓ Checkpoint saved (F1: 0.6435)
+Loss: 0.001452310394694787
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
 Epoch 3
 -------------------------------
-Loss: 0.001584633464424968
-Val F1 (weighted): 0.6805
-✓ Checkpoint saved (F1: 0.6805)
+Loss: 0.0017133327840848733
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
 Epoch 4
 -------------------------------
-Loss: 0.001237680742152168
-Val F1 (weighted): 0.7338
-✓ Checkpoint saved (F1: 0.7338)
+Loss: 0.0014526771225092064
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
 Epoch 5
 -------------------------------
-Loss: 0.000964330656231208
-Val F1 (weighted): 0.7631
-✓ Checkpoint saved (F1: 0.7631)
+Loss: 0.0012092523599095623
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
 Epoch 6
 -------------------------------
-Loss: 0.0011948225759064574
-Val F1 (weighted): 0.8217
-✓ Checkpoint saved (F1: 0.8217)
+Loss: 0.0015688245836408387
+Val F1 (macro): 0.5075
+✓ Checkpoint saved (F1: 0.5075)
 Epoch 7
 -------------------------------
-Loss: 0.0009856688915621536
-Val F1 (weighted): 0.8327
-✓ Checkpoint saved (F1: 0.8327)
+Loss: 0.0013184747623123285
+Val F1 (macro): 0.5075
+✓ Checkpoint saved (F1: 0.5075)
 Epoch 8
 -------------------------------
-Loss: 0.0011562700490005144
-Val F1 (weighted): 0.7899
-EarlyStopping counter: 1 out of 10
+Loss: 0.0016196362541528754
+Val F1 (macro): 0.6244
+✓ Checkpoint saved (F1: 0.6244)
 Epoch 9
 -------------------------------
-Loss: 0.0006865086294615845
-Val F1 (weighted): 0.8040
-EarlyStopping counter: 2 out of 10
+Loss: 0.0009560651754908282
+Val F1 (macro): 0.6110
+EarlyStopping counter: 1 out of 10
 Epoch 10
 -------------------------------
-Loss: 0.0006919004989944342
-Val F1 (weighted): 0.8333
-✓ Checkpoint saved (F1: 0.8333)
+Loss: 0.0011645835319548162
+Val F1 (macro): 0.6378
+✓ Checkpoint saved (F1: 0.6378)
 Epoch 11
 -------------------------------
-Loss: 0.0006859070472134889
-Val F1 (weighted): 0.8336
-✓ Checkpoint saved (F1: 0.8336)
+Loss: 0.0010835026360043437
+Val F1 (macro): 0.7034
+✓ Checkpoint saved (F1: 0.7034)
 Epoch 12
 -------------------------------
-Loss: 0.0005879584159559876
-Val F1 (weighted): 0.8404
-✓ Checkpoint saved (F1: 0.8404)
+Loss: 0.0009280077677040003
+Val F1 (macro): 0.6862
+EarlyStopping counter: 1 out of 10
 Epoch 13
 -------------------------------
-Loss: 0.0008482421172484187
-Val F1 (weighted): 0.7883
-EarlyStopping counter: 1 out of 10
+Loss: 0.0013566907428906468
+Val F1 (macro): 0.5966
+EarlyStopping counter: 2 out of 10
 Epoch 14
 -------------------------------
-Loss: 0.000416175175562463
-Val F1 (weighted): 0.8200
-EarlyStopping counter: 2 out of 10
+Loss: 0.0010373354261461409
+Val F1 (macro): 0.7123
+✓ Checkpoint saved (F1: 0.7123)
 Epoch 15
 -------------------------------
-Loss: 0.0002657843530936399
-Val F1 (weighted): 0.8389
-EarlyStopping counter: 3 out of 10
+Loss: 0.0006059875697580002
+Val F1 (macro): 0.7564
+✓ Checkpoint saved (F1: 0.7564)
 Epoch 16
 -------------------------------
-Loss: 0.00043683811908459846
-Val F1 (weighted): 0.8132
-EarlyStopping counter: 4 out of 10
+Loss: 0.0005296464943097141
+Val F1 (macro): 0.7502
+EarlyStopping counter: 1 out of 10
 Epoch 17
 -------------------------------
-Loss: 0.0007094942583079254
-Val F1 (weighted): 0.7857
-EarlyStopping counter: 5 out of 10
+Loss: 0.0009070202594495002
+Val F1 (macro): 0.7584
+✓ Checkpoint saved (F1: 0.7584)
 Epoch 18
 -------------------------------
-Loss: 0.0002600391781663773
-Val F1 (weighted): 0.8354
-EarlyStopping counter: 6 out of 10
+Loss: 0.0005838457333829264
+Val F1 (macro): 0.6611
+EarlyStopping counter: 1 out of 10
 Epoch 19
 -------------------------------
-Loss: 0.0005450493279304213
-Val F1 (weighted): 0.8100
-EarlyStopping counter: 7 out of 10
+Loss: 0.0008786266086665728
+Val F1 (macro): 0.7201
+EarlyStopping counter: 2 out of 10
 Epoch 20
 -------------------------------
-Loss: 0.00013936408641380816
-Val F1 (weighted): 0.8185
-EarlyStopping counter: 8 out of 10
+Loss: 0.0004135759656362558
+Val F1 (macro): 0.7543
+EarlyStopping counter: 3 out of 10
 Epoch 21
 -------------------------------
-Loss: 0.00027129383942553107
-Val F1 (weighted): 0.8281
-EarlyStopping counter: 9 out of 10
+Loss: 0.0007506194157151472
+Val F1 (macro): 0.6968
+EarlyStopping counter: 4 out of 10
 Epoch 22
 -------------------------------
-Loss: 0.0004624947715958263
-Val F1 (weighted): 0.7966
+Loss: 0.0005560982924987948
+Val F1 (macro): 0.7275
+EarlyStopping counter: 5 out of 10
+Epoch 23
+-------------------------------
+Loss: 0.0003890197998998123
+Val F1 (macro): 0.7519
+EarlyStopping counter: 6 out of 10
+Epoch 24
+-------------------------------
+Loss: 0.0006353228753456329
+Val F1 (macro): 0.7361
+EarlyStopping counter: 7 out of 10
+Epoch 25
+-------------------------------
+Loss: 0.0003983834545120938
+Val F1 (macro): 0.7034
+EarlyStopping counter: 8 out of 10
+Epoch 26
+-------------------------------
+Loss: 0.0004942131254812537
+Val F1 (macro): 0.7344
+EarlyStopping counter: 9 out of 10
+Epoch 27
+-------------------------------
+Loss: 0.00090245709164452
+Val F1 (macro): 0.7484
 EarlyStopping counter: 10 out of 10
-Early stopping triggered after 22 epochs
+Early stopping triggered after 27 epochs
 
 Training complete!
-Loaded best model (Best F1: 0.8404)
+Loaded best model (Best F1: 0.7584)
 
-Job finished at: Sun Feb 22 17:00:41 EST 2026
+Job finished at: Sun Feb 22 21:08:00 EST 2026
 Exit code: 
 ============================================================

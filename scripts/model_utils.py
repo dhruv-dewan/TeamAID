@@ -15,7 +15,7 @@ def set_seed(seed: int = 42):
     torch.cuda.manual_seed_all(seed) # For multi-GPU
     
     # 3. HPC/CUDA Specifics (The "Deterministic" flags)
-    torch.backends.cudnn.deterministic = False
+    torch.backends.cudnn.deterministic = True
     torch.backends.cudnn.benchmark = False
     
     # 4. Force CPU/GPU algorithm determinism (latest PyTorch versions)
@@ -33,9 +33,9 @@ class EarlyStopping:
         self.early_stop = False
         self.checkpoint_path = checkpoint_path
 
-    def __call__(self, f1_w_avg, model):
-        """Monitor F1 weighted average and trigger early stopping if needed."""
-        score = f1_w_avg  # Higher F1 is better
+    def __call__(self, f1_macro_avg, model):
+        """Monitor F1 macro average and trigger early stopping if needed."""
+        score = f1_macro_avg  # Higher F1 is better
         if self.best_score is None:
             self.best_score = score
             if self.checkpoint_path:

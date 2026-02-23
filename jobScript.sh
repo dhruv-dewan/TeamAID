@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=baseline_test
+#SBATCH --job-name=baseline_test_supervised
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
