@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=baseline_test_supervised
+#SBATCH --job-name=train_supervised_ham-ddi
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
-#SBATCH --time=0:30:00
+#SBATCH --time=1:00:00
 #SBATCH --output=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.out
 
 source /etc/profile
@@ -33,7 +33,7 @@ echo
 
 cd /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/
 
-python scripts/baseline_test.py
+python scripts/baseline_train_ham_then_resnet.py
 
 echo
 echo "Job finished at: $(date)"

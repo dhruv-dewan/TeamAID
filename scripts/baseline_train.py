@@ -19,7 +19,8 @@ from config import (
     batch_size,
     num_classes,
     epochs,
-    learning_rate
+    learning_rate,
+    freeze_backbone # For freezing backbone layers during training (experiments)
 )
 
 set_seed(42)  # Set seed for reproducibility
@@ -63,7 +64,16 @@ val_dataloader = DataLoader(val_data, batch_size=batch_size, shuffle=False)
 model = models.resnet50(weights='DEFAULT')
 model.fc = nn.Linear(model.fc.in_features, num_classes)
 
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
+# Freeze backbone layers if freeze_backbone flag is set
+if freeze_backbone:
+    for name, param in model.named_parameters():
+        if "layer4" not in name and "fc" not in name:
+            param.requires_grad = False
+    print("Backbone frozen: Training only layer4 and fc")
+
+# Only optimize trainable parameters
+trainable_params = filter(lambda p: p.requires_grad, model.parameters())
+optimizer = torch.optim.Adam(trainable_params, lr=learning_rate)
 loss_fn = nn.CrossEntropyLoss()
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

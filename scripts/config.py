@@ -24,6 +24,11 @@ ddi_train_dir = f"{BASE_DIR}/stratified_split/train"
 ddi_val_dir = f"{BASE_DIR}/stratified_split/val"
 ddi_test_dir = f"{BASE_DIR}/stratified_split/test"
 
+# HAM10000 dataset paths
+ham_dir = f"{BASE_DIR}/HAM100000_organized"
+ham_train_dir = f"{BASE_DIR}/HAM10000_split/train"
+ham_val_dir = f"{BASE_DIR}/HAM10000_split/val"
+
 # Labels and settings
 label = ["malignant", "benign"]
 batch_size = 32
@@ -31,4 +36,5 @@ num_classes = 2
 epochs = 50
 learning_rate = 1e-4
 
-# NEED TO SPLIT VALIDATION SETS AND IMPLEMENT EARLY STOPPING
+# Freezing settings
+freeze_backbone = False
