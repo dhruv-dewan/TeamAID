@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=train_supervised_ham-ddi
+#SBATCH --job-name=train_sup_ham-ddi
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
-#SBATCH --time=1:00:00
+#SBATCH --time=2:00:00
 #SBATCH --output=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.out
 
 source /etc/profile

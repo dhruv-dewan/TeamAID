@@ -24,7 +24,7 @@ def set_seed(seed: int = 42):
     print(f"Seed set to {seed} (Deterministic mode enabled)")
 
 class EarlyStopping:
-    def __init__(self, patience=10, verbose=False, delta=0, checkpoint_path=None):
+    def __init__(self, patience=10, verbose=False, delta=1e-3, checkpoint_path=None):
         self.patience = patience
         self.verbose = verbose
         self.delta = delta

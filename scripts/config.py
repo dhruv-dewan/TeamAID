@@ -25,9 +25,7 @@ ddi_val_dir = f"{BASE_DIR}/stratified_split/val"
 ddi_test_dir = f"{BASE_DIR}/stratified_split/test"
 
 # HAM10000 dataset paths
-ham_dir = f"{BASE_DIR}/HAM100000_organized"
-ham_train_dir = f"{BASE_DIR}/HAM10000_split/train"
-ham_val_dir = f"{BASE_DIR}/HAM10000_split/val"
+ham_dir = f"{BASE_DIR}/HAM10000_organized"
 
 # Labels and settings
 label = ["malignant", "benign"]
