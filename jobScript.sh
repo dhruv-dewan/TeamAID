@@ -6,8 +6,10 @@
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
-#SBATCH --time=2:00:00
+#SBATCH --time=12:00:00
 #SBATCH --output=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.out
+#SBATCH --error=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.err
+
 
 source /etc/profile
 module purge
