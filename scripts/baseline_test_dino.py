@@ -38,11 +38,24 @@ print("Benign samples: ", sum(1 for _, label in test_data.samples if label == te
 
 test_dataloader = DataLoader(test_data, batch_size=batch_size, shuffle=False)
 
-# Load the trained model
-model = models.resnet50(weights='DEFAULT')
+# Load pre-trained DINO SSL ResNet50 model
+# Loading DINO model locally (for HPC node running without internet access)
+try:
+        model = torch.hub.load('facebookresearch/dino:main', 'dino_resnet50')
+except Exception as e:
+        print("Warning: Failed to fetch from internet; trying local repo...")
+        model = torch.hub.load('/home/ddewan/dino', 'dino_resnet50', source='local')
 model = model.cpu()
-model.fc = nn.Linear(model.fc.in_features, num_classes)
-model.load_state_dict(torch.load(f"{BASE_DIR}/supervised/best_model.pth"))
+
+with torch.no_grad():
+    dummy_input = torch.zeros(1, 3, 224, 224)
+    features = model(dummy_input)
+    num_features = features.shape[1] # Should be 2048
+
+print(f"Extracted feature dimension from DINO ResNet50: {num_features}")
+model.fc = nn.Linear(num_features, num_classes)
+
+model.load_state_dict(torch.load(f"{BASE_DIR}/dino/best_model.pth"))
 
 # move model to GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
