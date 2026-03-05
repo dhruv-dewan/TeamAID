@@ -1,0 +1,45 @@
+============================================================
+Starting job test_dino_ham-ddi  (Job ID: 18367877)
+Running on host: gpu-b10-6.zaratan.umd.edu
+Cores per task: 4
+GPUs allocated : 
+Job started at : Tue Mar  3 11:45:11 EST 2026
+Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
+============================================================
+
+Tue Mar  3 11:45:11 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:81:00.0 Off |                    0 |
+| N/A   26C    P0             52W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Seed set to 42 (Deterministic mode enabled)
+Test Dataset Size:  132
+Classes:  ['benign', 'malignant']
+Class to index mapping:  {'benign': 0, 'malignant': 1}
+Malignant samples:  34
+Benign samples:  98
+Warning: Failed to fetch from internet; trying local repo...
+Extracted feature dimension from DINO ResNet50: 2048
+Test Accuracy: 0.7348
+Test F1 Macro Average: 0.6428
+Test F1 Weighted Average: 0.7307
+
+Job finished at: Tue Mar  3 11:47:35 EST 2026
+Exit code: 
+============================================================
