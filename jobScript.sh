@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_dino_ham-ddi
+#SBATCH --job-name=test_dino_ham-ddi_joint
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
