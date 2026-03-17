@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_dino_ham-ddi_joint
+#SBATCH --job-name=test_sup_ham-on-ddi
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
@@ -35,7 +35,7 @@ echo
 
 cd /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/
 
-python scripts/baseline_test_dino.py
+python scripts/baseline_test.py
 
 echo
 echo "Job finished at: $(date)"

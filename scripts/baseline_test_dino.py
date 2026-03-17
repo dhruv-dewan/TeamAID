@@ -55,7 +55,7 @@ with torch.no_grad():
 print(f"Extracted feature dimension from DINO ResNet50: {num_features}")
 model.fc = nn.Linear(num_features, num_classes)
 
-model.load_state_dict(torch.load(f"{BASE_DIR}/dino/best_model.pth"))
+model.load_state_dict(torch.load(f"{BASE_DIR}/dino/ham_ddi_split/ham_best_model.pth"))
 
 # move model to GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

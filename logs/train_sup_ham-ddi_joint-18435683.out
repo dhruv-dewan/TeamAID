@@ -1,0 +1,220 @@
+============================================================
+Starting job train_sup_ham-ddi_joint  (Job ID: 18435683)
+Running on host: gpu-b10-3.zaratan.umd.edu
+Cores per task: 4
+GPUs allocated : 
+Job started at : Mon Mar  9 14:38:40 EDT 2026
+Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
+============================================================
+
+Mon Mar  9 14:38:40 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   29C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Seed set to 42 (Deterministic mode enabled)
+
+================================================================================
+Preparing HAM10000 Dataset (90% train split)
+================================================================================
+
+HAM10000 Dataset Size:  10015
+Classes:  ['benign', 'malignant']
+Class to index mapping:  {'benign': 0, 'malignant': 1}
+Malignant samples:  1954
+Benign samples:  8061
+HAM10000 Train size: 9013 (90%)
+
+================================================================================
+Preparing DDI Dataset
+================================================================================
+
+DDI Train Dataset Size:  393
+Classes:  ['benign', 'malignant']
+Class to index mapping:  {'benign': 0, 'malignant': 1}
+Malignant samples:  103
+Benign samples:  290
+DDI Val Dataset Size:  131
+
+================================================================================
+Combining HAM10000 (90% train) + DDI Train for Joint Training
+================================================================================
+
+Combined Training Dataset Size: 9406
+  - HAM10000 train: 9013
+  - DDI train: 393
+
+Using device: cuda
+
+================================================================================
+Joint Training on Combined HAM10000 + DDI Data
+================================================================================
+
+Epoch 1
+-------------------------------
+Loss: 7.288351531437349e-05
+DDI Val F1 (macro): 0.4807
+✓ Checkpoint saved (F1: 0.4807)
+Epoch 2
+-------------------------------
+Loss: 2.061789362272911e-05
+DDI Val F1 (macro): 0.6110
+✓ Checkpoint saved (F1: 0.6110)
+Epoch 3
+-------------------------------
+Loss: 3.1450556208168274e-05
+DDI Val F1 (macro): 0.6378
+✓ Checkpoint saved (F1: 0.6378)
+Epoch 4
+-------------------------------
+Loss: 2.6360062267231276e-05
+DDI Val F1 (macro): 0.5229
+EarlyStopping counter: 1 out of 10
+Epoch 5
+-------------------------------
+Loss: 2.0261485602484088e-05
+DDI Val F1 (macro): 0.6540
+✓ Checkpoint saved (F1: 0.6540)
+Epoch 6
+-------------------------------
+Loss: 3.109856498968898e-05
+DDI Val F1 (macro): 0.6807
+✓ Checkpoint saved (F1: 0.6807)
+Epoch 7
+-------------------------------
+Loss: 1.9035067440169226e-05
+DDI Val F1 (macro): 0.6893
+✓ Checkpoint saved (F1: 0.6893)
+Epoch 8
+-------------------------------
+Loss: 2.21040111740878e-05
+DDI Val F1 (macro): 0.7201
+✓ Checkpoint saved (F1: 0.7201)
+Epoch 9
+-------------------------------
+Loss: 3.3923860638541614e-05
+DDI Val F1 (macro): 0.7361
+✓ Checkpoint saved (F1: 0.7361)
+Epoch 10
+-------------------------------
+Loss: 1.8229275187760648e-05
+DDI Val F1 (macro): 0.6973
+EarlyStopping counter: 1 out of 10
+Epoch 11
+-------------------------------
+Loss: 1.5886568995250076e-05
+DDI Val F1 (macro): 0.6734
+EarlyStopping counter: 2 out of 10
+Epoch 12
+-------------------------------
+Loss: 1.1606911459096867e-05
+DDI Val F1 (macro): 0.7354
+EarlyStopping counter: 3 out of 10
+Epoch 13
+-------------------------------
+Loss: 1.81593857951147e-05
+DDI Val F1 (macro): 0.7104
+EarlyStopping counter: 4 out of 10
+Epoch 14
+-------------------------------
+Loss: 2.078729729791309e-05
+DDI Val F1 (macro): 0.6366
+EarlyStopping counter: 5 out of 10
+Epoch 15
+-------------------------------
+Loss: 1.7873985625925456e-05
+DDI Val F1 (macro): 0.7238
+EarlyStopping counter: 6 out of 10
+Epoch 16
+-------------------------------
+Loss: 2.0099698850861666e-05
+DDI Val F1 (macro): 0.7091
+EarlyStopping counter: 7 out of 10
+Epoch 17
+-------------------------------
+Loss: 2.8105449884363167e-05
+DDI Val F1 (macro): 0.6429
+EarlyStopping counter: 8 out of 10
+Epoch 18
+-------------------------------
+Loss: 1.3614743916298414e-05
+DDI Val F1 (macro): 0.7702
+✓ Checkpoint saved (F1: 0.7702)
+Epoch 19
+-------------------------------
+Loss: 1.351893987398109e-05
+DDI Val F1 (macro): 0.6749
+EarlyStopping counter: 1 out of 10
+Epoch 20
+-------------------------------
+Loss: 1.3252523397603442e-05
+DDI Val F1 (macro): 0.6829
+EarlyStopping counter: 2 out of 10
+Epoch 21
+-------------------------------
+Loss: 1.0971044089828124e-05
+DDI Val F1 (macro): 0.7363
+EarlyStopping counter: 3 out of 10
+Epoch 22
+-------------------------------
+Loss: 1.7324256980619404e-05
+DDI Val F1 (macro): 0.7104
+EarlyStopping counter: 4 out of 10
+Epoch 23
+-------------------------------
+Loss: 8.37040332791756e-06
+DDI Val F1 (macro): 0.6867
+EarlyStopping counter: 5 out of 10
+Epoch 24
+-------------------------------
+Loss: 3.898006574970191e-05
+DDI Val F1 (macro): 0.6892
+EarlyStopping counter: 6 out of 10
+Epoch 25
+-------------------------------
+Loss: 8.393233503758996e-06
+DDI Val F1 (macro): 0.7147
+EarlyStopping counter: 7 out of 10
+Epoch 26
+-------------------------------
+Loss: 3.553544514335877e-05
+DDI Val F1 (macro): 0.6487
+EarlyStopping counter: 8 out of 10
+Epoch 27
+-------------------------------
+Loss: 7.089800925146334e-06
+DDI Val F1 (macro): 0.7333
+EarlyStopping counter: 9 out of 10
+Epoch 28
+-------------------------------
+Loss: 1.0181106698277298e-05
+DDI Val F1 (macro): 0.6619
+EarlyStopping counter: 10 out of 10
+Early stopping triggered after 28 epochs
+
+Joint training complete!
+Loaded best model (Best DDI Val F1: 0.7702)
+
+================================================================================
+Joint Training Pipeline Finished!
+================================================================================
+
+Job finished at: Mon Mar  9 15:45:38 EDT 2026
+Exit code: 
+============================================================
