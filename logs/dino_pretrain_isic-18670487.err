@@ -1,0 +1,73 @@
+Loading cuda/12.3.0/gcc/11.3.0/zen2
+  Loading requirement: gcc/11.3.0
+
+*****************************************
+Setting OMP_NUM_THREADS environment variable for each process to be 1 in default, to avoid your system being overloaded, please further tune the variable for optimal performance in your application as needed. 
+*****************************************
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/distributed_c10d.py:4876: UserWarning: barrier(): using the device under current context. You can specify `device_id` in `init_process_group` to mute this warning.
+  warnings.warn(  # warn only once
+[rank0]:[W321 12:14:18.145040655 ProcessGroupNCCL.cpp:5068] Guessing device ID based on global rank. This can cause a hang if rank to GPU mapping is heterogeneous. You can specify device_id in init_process_group()
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/utils/data/dataloader.py:627: UserWarning: This DataLoader will create 10 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/utils/data/dataloader.py:627: UserWarning: This DataLoader will create 10 worker processes in total. Our suggested max number of worker in current system is 8, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/nn/utils/weight_norm.py:144: FutureWarning: `torch.nn.utils.weight_norm` is deprecated in favor of `torch.nn.utils.parametrizations.weight_norm`.
+  WeightNorm.apply(module, name, dim)
+/home/ddewan/dino/main_dino.py:237: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  fp16_scaler = torch.cuda.amp.GradScaler()
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/home/ddewan/dino/main_dino.py", line 473, in <module>
+[rank1]:     train_dino(args)
+[rank1]:   File "/home/ddewan/dino/main_dino.py", line 240, in train_dino
+[rank1]:     lr_schedule = utils.cosine_scheduler(
+[rank1]:   File "/home/ddewan/dino/utils.py", line 197, in cosine_scheduler
+[rank1]:     assert len(schedule) == epochs * niter_per_ep
+[rank1]: AssertionError
+/home/ddewan/dino/main_dino.py:237: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  fp16_scaler = torch.cuda.amp.GradScaler()
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ddewan/dino/main_dino.py", line 473, in <module>
+[rank0]:     train_dino(args)
+[rank0]:   File "/home/ddewan/dino/main_dino.py", line 240, in train_dino
+[rank0]:     lr_schedule = utils.cosine_scheduler(
+[rank0]:   File "/home/ddewan/dino/utils.py", line 197, in cosine_scheduler
+[rank0]:     assert len(schedule) == epochs * niter_per_ep
+[rank0]: AssertionError
+[rank0]:[W321 12:14:21.200034450 ProcessGroupNCCL.cpp:1524] Warning: WARNING: destroy_process_group() was not called before program exit, which can leak resources. For more info, please see https://pytorch.org/docs/stable/distributed.html#shutdown (function operator())
+W0321 12:14:23.276000 3073386 site-packages/torch/distributed/elastic/multiprocessing/api.py:908] Sending process 3073404 closing signal SIGTERM
+E0321 12:14:23.341000 3073386 site-packages/torch/distributed/elastic/multiprocessing/api.py:882] failed (exitcode: 1) local_rank: 0 (pid: 3073403) of binary: /home/ddewan/miniconda3/envs/aid/bin/python
+Traceback (most recent call last):
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/run.py", line 940, in <module>
+    main()
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/elastic/multiprocessing/errors/__init__.py", line 357, in wrapper
+    return f(*args, **kwargs)
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/run.py", line 936, in main
+    run(args)
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/run.py", line 927, in run
+    elastic_launch(
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 156, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/home/ddewan/miniconda3/envs/aid/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 293, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+main_dino.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2026-03-21_12:14:23
+  host      : gpu-b10-6.zaratan.umd.edu
+  rank      : 0 (local_rank: 0)
+  exitcode  : 1 (pid: 3073403)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================

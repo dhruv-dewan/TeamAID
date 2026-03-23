@@ -1,0 +1,79 @@
+============================================================
+Starting job dino_pretrain_isic  (Job ID: 18670487)
+Running on host: gpu-b10-6.zaratan.umd.edu
+Cores per task: 8
+GPUs allocated : 
+Job started at : Sat Mar 21 12:14:10 EDT 2026
+Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
+============================================================
+
+Sat Mar 21 12:14:10 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:01:00.0 Off |                    0 |
+| N/A   34C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A100-SXM4-40GB          On  |   00000000:41:00.0 Off |                    0 |
+| N/A   21C    P0             50W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+| distributed init (rank 0): env://
+| distributed init (rank 1): env://
+git:
+  sha: 7c446df5b9f45747937fb0d72314eb9f7b66930a, status: has uncommited changes, branch: main
+
+arch: resnet50
+batch_size_per_gpu: 64
+clip_grad: 3.0
+data_path: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/data/ISIC_DATA
+dist_url: env://
+drop_path_rate: 0.1
+epochs: 1
+freeze_last_layer: 1
+global_crops_scale: [0.14, 1.0]
+gpu: 0
+local_crops_number: 8
+local_crops_scale: [0.05, 0.14]
+local_rank: 0
+lr: 0.03
+min_lr: 1e-06
+momentum_teacher: 0.996
+norm_last_layer: False
+num_workers: 10
+optimizer: sgd
+out_dim: 65536
+output_dir: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/data/dino_pretrained/
+patch_size: 16
+rank: 0
+saveckp_freq: 20
+seed: 0
+teacher_temp: 0.04
+use_bn_in_head: False
+use_fp16: True
+warmup_epochs: 10
+warmup_teacher_temp: 0.04
+warmup_teacher_temp_epochs: 0
+weight_decay: 0.0001
+weight_decay_end: 0.0001
+world_size: 2
+Data loaded: there are 25331 images.
+Student and Teacher are built: they are both resnet50 network.
+
+Job finished at: Sat Mar 21 12:14:23 EDT 2026
+Exit code: 1
+============================================================

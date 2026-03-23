@@ -1,0 +1,159 @@
+============================================================
+Starting job train_full_dino_frozen  (Job ID: 18672873)
+Running on host: gpu-b10-2.zaratan.umd.edu
+Cores per task: 4
+GPUs allocated : 
+Job started at : Sun Mar 22 16:45:32 EDT 2026
+Working directory: /scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID
+============================================================
+
+Sun Mar 22 16:45:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 590.44.01      CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A100-SXM4-40GB          On  |   00000000:C1:00.0 Off |                    0 |
+| N/A   23C    P0             55W /  400W |       0MiB /  40960MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Seed set to 42 (Deterministic mode enabled)
+Train Dataset Size:  393
+Classes:  ['benign', 'malignant']
+Class to index mapping:  {'benign': 0, 'malignant': 1}
+Malignant samples:  103
+Benign samples:  290
+Loaded DINO weights.
+Missing keys: ['fc.weight', 'fc.bias']
+Unexpected keys: []
+Backbone frozen: Training only layer4 and fc
+Using device: cuda
+Epoch 1
+-------------------------------
+Loss: 0.0017140598697516754
+Val F1 (macro): 0.4254
+✓ Checkpoint saved (F1: 0.4254)
+Epoch 2
+-------------------------------
+Loss: 0.0012804224290920577
+Val F1 (macro): 0.4559
+✓ Checkpoint saved (F1: 0.4559)
+Epoch 3
+-------------------------------
+Loss: 0.0013141295382084737
+Val F1 (macro): 0.5279
+✓ Checkpoint saved (F1: 0.5279)
+Epoch 4
+-------------------------------
+Loss: 0.0013212936221794925
+Val F1 (macro): 0.5518
+✓ Checkpoint saved (F1: 0.5518)
+Epoch 5
+-------------------------------
+Loss: 0.0010052569039905345
+Val F1 (macro): 0.5966
+✓ Checkpoint saved (F1: 0.5966)
+Epoch 6
+-------------------------------
+Loss: 0.0011549278069998472
+Val F1 (macro): 0.7113
+✓ Checkpoint saved (F1: 0.7113)
+Epoch 7
+-------------------------------
+Loss: 0.0009422503961558258
+Val F1 (macro): 0.6611
+EarlyStopping counter: 1 out of 10
+Epoch 8
+-------------------------------
+Loss: 0.0013034553018235067
+Val F1 (macro): 0.7564
+✓ Checkpoint saved (F1: 0.7564)
+Epoch 9
+-------------------------------
+Loss: 0.0007041022371093128
+Val F1 (macro): 0.7121
+EarlyStopping counter: 1 out of 10
+Epoch 10
+-------------------------------
+Loss: 0.0006589947159357047
+Val F1 (macro): 0.7201
+EarlyStopping counter: 2 out of 10
+Epoch 11
+-------------------------------
+Loss: 0.0006109691834025104
+Val F1 (macro): 0.7043
+EarlyStopping counter: 3 out of 10
+Epoch 12
+-------------------------------
+Loss: 0.0005349199128818269
+Val F1 (macro): 0.7838
+✓ Checkpoint saved (F1: 0.7838)
+Epoch 13
+-------------------------------
+Loss: 0.00062158480097016
+Val F1 (macro): 0.7434
+EarlyStopping counter: 1 out of 10
+Epoch 14
+-------------------------------
+Loss: 0.00040785657388866706
+Val F1 (macro): 0.7329
+EarlyStopping counter: 2 out of 10
+Epoch 15
+-------------------------------
+Loss: 0.00019851654919655876
+Val F1 (macro): 0.7179
+EarlyStopping counter: 3 out of 10
+Epoch 16
+-------------------------------
+Loss: 0.00022410356816444688
+Val F1 (macro): 0.7220
+EarlyStopping counter: 4 out of 10
+Epoch 17
+-------------------------------
+Loss: 0.0005145261381721981
+Val F1 (macro): 0.7147
+EarlyStopping counter: 5 out of 10
+Epoch 18
+-------------------------------
+Loss: 0.00024273802002574348
+Val F1 (macro): 0.6408
+EarlyStopping counter: 6 out of 10
+Epoch 19
+-------------------------------
+Loss: 0.0006932564667466336
+Val F1 (macro): 0.7388
+EarlyStopping counter: 7 out of 10
+Epoch 20
+-------------------------------
+Loss: 0.00013570959558923735
+Val F1 (macro): 0.6749
+EarlyStopping counter: 8 out of 10
+Epoch 21
+-------------------------------
+Loss: 0.00030269324021181684
+Val F1 (macro): 0.6968
+EarlyStopping counter: 9 out of 10
+Epoch 22
+-------------------------------
+Loss: 0.0005582234710834105
+Val F1 (macro): 0.6899
+EarlyStopping counter: 10 out of 10
+Early stopping triggered after 22 epochs
+
+Training complete!
+Loaded best model (Best F1: 0.7838)
+
+Job finished at: Sun Mar 22 16:48:56 EDT 2026
+Exit code: 
+============================================================
