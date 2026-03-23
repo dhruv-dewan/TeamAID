@@ -35,4 +35,4 @@ epochs = 50
 learning_rate = 1e-4
 
 # Freezing settings
-freeze_backbone = False
+freeze_backbone = True

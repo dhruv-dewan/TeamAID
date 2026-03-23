@@ -42,7 +42,7 @@ test_dataloader = DataLoader(test_data, batch_size=batch_size, shuffle=False)
 model = models.resnet50(weights='DEFAULT')
 model = model.cpu()
 model.fc = nn.Linear(model.fc.in_features, num_classes)
-model.load_state_dict(torch.load(f"{BASE_DIR}/supervised/ham_ddi_split/ham_best_model.pth"))
+model.load_state_dict(torch.load(f"{BASE_DIR}/full_dino/best_model.pth"))
 
 # move model to GPU
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")

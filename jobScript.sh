@@ -1,12 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=test_sup_ham-on-ddi
+#SBATCH --job-name=test_full_dino_frozen
 #SBATCH --account=heng-prj-aac
 #SBATCH --partition=gpu
 #SBATCH --gres=gpu:a100:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64GB
-#SBATCH --time=1:00:00
+#SBATCH --time=0:30:00
 #SBATCH --output=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.out
 #SBATCH --error=/scratch/zt1/project/heng-prj/user/ddewan/AID/TeamAID/logs/%x-%j.err
 
